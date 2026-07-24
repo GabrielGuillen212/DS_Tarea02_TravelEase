@@ -1,3 +1,7 @@
+import Factory.VehiculoFactory;
+import Factory.VehiculoSUVFactory;
+import Factory.VueloEjecutivoFactory;
+import Factory.VueloFactory;
 import Reservas.*;
 
 public class Main {
@@ -18,5 +22,20 @@ public class Main {
 
         System.out.println(reserva.getServicio().getDescripcion());
         System.out.println(reserva.getServicio().getPrecio());
+
+        //Factory Method
+        VueloFactory fabricaVuelo = new VueloEjecutivoFactory();
+        ServicioReserva vueloEjecutivo = fabricaVuelo.reservarVuelo("V002", "Guayaquil - Madrid", 480);
+        vueloEjecutivo = new SeguroViajeDecorator(vueloEjecutivo);
+
+        VehiculoFactory fabricaVehiculo = new VehiculoSUVFactory();
+        ServicioReserva vehiculoSUV = fabricaVehiculo.reservarVehiculo("VH02", "Camioneta", 90);
+        vehiculoSUV = new CoberturaVehiculoDecorator(vehiculoSUV);
+
+        System.out.println(vueloEjecutivo.getDescripcion() + " - $" + vueloEjecutivo.getPrecio());
+        System.out.println(vehiculoSUV.getDescripcion() + " - $" + vehiculoSUV.getPrecio());
+
+        Reserva reservaFactory = new Reserva("R010", vueloEjecutivo);
+        System.out.println("Reserva " + reservaFactory.getIdReserva() + " -> " + reservaFactory.getEstado());
     }
 }
