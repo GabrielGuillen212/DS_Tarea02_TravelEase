@@ -2,13 +2,13 @@ import Reservas.*;
 
 public class Main {
     public static void main(String[] args) {
-        ServicioReserva vuelo = new Vuelo("V001", "Vuelo Guayaquil - Quito", 220);
+        ServicioReserva vuelo = new Vuelo("V001", "Vuelo Guayaquil - Quito", 220,"Aerolinea 1");
         vuelo = new SeguroViajeDecorator(vuelo);
 
         System.out.println(vuelo.getDescripcion());
         System.out.println(vuelo.getPrecio());
 
-        ServicioReserva vehiculo = new Vehiculo("VH01", "SUV Toyota", 90);
+        ServicioReserva vehiculo = new Vehiculo("VH01", "SUV Toyota", 90, "ProveedorTransporte");
         vehiculo = new CoberturaVehiculoDecorator(vehiculo);
 
         System.out.println(vehiculo.getDescripcion());
