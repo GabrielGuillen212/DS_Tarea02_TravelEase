@@ -22,4 +22,8 @@ public abstract class ServicioReservaDecorator implements ServicioReserva {
     public double getPrecio() {
         return servicio.getPrecio();
     }
+
+    public String getNombreProveedor(){
+        return this.servicio.getNombreProveedor();
+    }
 }
