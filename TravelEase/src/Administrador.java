@@ -1,8 +1,12 @@
-import Notificaciones.notificador;
+import Notificaciones.Notificador;
+import Notificaciones.Politicas;
+import Notificaciones.Itinerario;
 
 public class Administrador extends Persona {
     
-    String idAdministrador;
+    public String idAdministrador;
+    private Notificador notificador;
+
 
     public Administrador(String nombre, String email) {
         super(nombre, email);
@@ -21,14 +25,26 @@ public class Administrador extends Persona {
         this.idAdministrador = idAdministrador;
     }
 
-    public void gestionerpoliticas(Notificador notificador, String politica) {
-        
-        System.out.println("El administrador " + getNombre() + " está gestionando políticas.");
+    public void gestionerpoliticas(Notificador notificador, String idPolitica, String cambio) {
+        for (Politicas p : Politicas.listaPoliticas) {
+            if (p.getIdPolitica().equals(idPolitica)) {
+                p.setDescripcion(cambio);
+            }
+        }
+        notificador.notificar("La política " + idPolitica + " ha sido modificada por el administrador " + getNombre() + ".");
     }
 
-    public void gestionerItinerario(Notificador notificador, String itinerario) {
-        // Lógica de gestión..
-        System.out.println("El administrador " + getNombre() + " está gestionando políticas.");
+    public void gestionerItinerario(Notificador notificador, String horario, String descripcion) {
+        if (horario == null){
+            System.out.println("Horario invalido");
+        }else{
+            for (Itinerario i : Itinerario.listaItinerarios) {
+                if (i.getHorario().equals(horario)) {
+                    i.setDescripcion(descripcion);
+                }
+            }
+        }
+        notificador.notificar("El itinerario con horario " + horario + " ha sido modificado por el administrador " + getNombre() + ".");
     }
 
     public void gestionarReembolsos(Notificador notificador, String estadoReembolso) {
