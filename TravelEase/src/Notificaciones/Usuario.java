@@ -1,4 +1,4 @@
-package Personas;
+package Notificaciones;
 
 public class Usuario extends Persona {
     

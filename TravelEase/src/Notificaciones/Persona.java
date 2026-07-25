@@ -1,4 +1,4 @@
-package Personas;
+package Notificaciones;
 
 public abstract class Persona {
     

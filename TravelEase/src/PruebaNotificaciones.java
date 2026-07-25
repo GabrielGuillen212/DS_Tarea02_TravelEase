@@ -1,6 +1,5 @@
 
 import Notificaciones.*;
-import Personas.Administrador;
 
 public class PruebaNotificaciones {
     public static void main(String[] args) {

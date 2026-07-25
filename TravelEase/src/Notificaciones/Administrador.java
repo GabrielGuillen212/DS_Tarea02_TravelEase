@@ -1,7 +1,4 @@
-import Notificaciones.Itinerario;
-import Notificaciones.Notificador;
-import Notificaciones.Politicas;
-import Notificaciones.Reembolsos;
+package Notificaciones;
 
 public class Administrador extends Persona {
     
@@ -26,7 +23,7 @@ public class Administrador extends Persona {
         this.idAdministrador = idAdministrador;
     }
 
-    public void gestionerpoliticas(Notificador notificador, String idPolitica, String cambio) {
+    public void gestionarPoliticas(Notificador notificador, String idPolitica, String cambio) {
         for (Politicas p : Politicas.listaPoliticas) {
             if (p.getIdPolitica().equals(idPolitica)) {
                 p.setDescripcion(cambio);
@@ -35,7 +32,7 @@ public class Administrador extends Persona {
         notificador.notificar("La política " + idPolitica + " ha sido modificada por el administrador " + getNombre() + ".");
     }
 
-    public void gestionerItinerario(Notificador notificador, String horario, String descripcion) {
+    public void gestionarItinerario(Notificador notificador, String horario, String descripcion) {
         if (horario == null){
             System.out.println("Horario invalido");
         }else{

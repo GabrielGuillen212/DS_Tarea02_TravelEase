@@ -8,6 +8,7 @@ import Notificaciones.Notificador;
 import Notificaciones.Politicas;
 import Notificaciones.Itinerario;
 import Notificaciones.Reembolsos;
+import Notificaciones.Administrador;
 
 public class AdministradorTest {
 
@@ -30,27 +31,27 @@ public class AdministradorTest {
 
     @Test
     @DisplayName("Debe modificar la política correctamente y notificar a los usuarios")
-    void testGestionerpoliticas() {
+    void testGestionarPoliticas() {
 
-        admin.gestionerpoliticas(notificador, "P001", "Política modificada");
+        admin.gestionarPoliticas(notificador, "P001", "Política modificada");
 
         assertEquals("Política modificada", politica.getDescripcion(), "La política debería haberse modificado correctamente.");
     }
 
     @Test
     @DisplayName("Debe modificar el itinerario correctamente y notificar a los usuarios")
-    void testGestioneritinerario() {
+    void testGestionarItinerario() {
 
-        admin.gestioneritinerario(notificador, "10:00", "Itinerario modificado");
+        admin.gestionarItinerario(notificador, "10:00", "Itinerario modificado");
 
         assertEquals("Itinerario modificado", itinerario.getDescripcion(), "El itinerario debería haberse modificado correctamente.");
     }
 
     @Test
     @DisplayName("No debe modificar el itinerario si el horario es nulo")
-    void testGestioneritinerarioHorarioNulo() {
+    void testGestionarItinerarioHorarioNulo() {
 
-        admin.gestioneritinerario(notificador, null, "Itinerario modificado");
+        admin.gestionarItinerario(notificador, null, "Itinerario modificado");
 
         assertEquals("Itinerario original", itinerario.getDescripcion(), "El itinerario no debería haberse modificado debido a un horario nulo.");
     }
