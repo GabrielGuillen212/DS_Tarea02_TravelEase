@@ -1,3 +1,4 @@
+
 public class Usuario extends Persona {
     
     public String idUsuario;
