@@ -73,4 +73,5 @@ public class IncidenciaTest {
 
         assertEquals("Escalado a "+ proveedorEsperado, incidenciaProveedor.getEstado());
     }
+    
 }
