@@ -35,6 +35,7 @@ public class IncidenciaTest {
 
         Reserva reservaVehiculo = new Reserva("RES-02", vehiculoPrueba);
         Incidencia incVehiculo = new Incidencia("INC-02", "Llanta dañada", reservaVehiculo);
+        gestor.ejecutarSolucion(incVehiculo, true);
 
         assertEquals("RESUELTO", incVehiculo.getEstado());
     }
