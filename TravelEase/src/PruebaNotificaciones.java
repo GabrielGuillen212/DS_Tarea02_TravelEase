@@ -12,9 +12,14 @@ public class PruebaNotificaciones {
         UsuariosNotificados usuario1 = new EmailNotificado("gaguille@espo.edu.com");
         UsuariosNotificados usuario2 = new EmailNotificado("jaenguica@hitmail.com");
 
+        UsuariosNotificados usuario3 = new AppNotificado("UsuarioApp1");
+        UsuariosNotificados usuario4 = new AppNotificado("UsuarioApp2");
+
         
         notificador.agregarUsuario(usuario1);
         notificador.agregarUsuario(usuario2);
+        notificador.agregarUsuario(usuario3);
+        notificador.agregarUsuario(usuario4);
 
         
         admin.gestionerpoliticas(notificador, "P001", "Nueva política de cancelación: 24 horas antes del vuelo.");

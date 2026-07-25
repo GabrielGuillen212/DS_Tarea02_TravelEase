@@ -1,6 +1,6 @@
+import Notificaciones.Itinerario;
 import Notificaciones.Notificador;
 import Notificaciones.Politicas;
-import Notificaciones.Itinerario;
 import Notificaciones.Reembolsos;
 
 public class Administrador extends Persona {
