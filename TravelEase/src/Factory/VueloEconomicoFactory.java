@@ -1,10 +1,18 @@
 package Factory;
 
-import Reservas.*;
-
 public class VueloEconomicoFactory extends VueloFactory {
+
     @Override
-    public Vuelo crearVuelo(String id, String ruta, double precioBase) {
-        return new Vuelo(id, ruta + " - Clase Económica", precioBase);
+    public Vuelo crearVuelo(
+            String id,
+            String ruta,
+            double precioBase,
+            String nombreProveedor) {
+
+        return new Vuelo(
+                id,
+                ruta + " - Clase Económica",
+                precioBase,
+                nombreProveedor);
     }
 }

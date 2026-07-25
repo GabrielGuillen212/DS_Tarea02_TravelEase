@@ -1,13 +1,15 @@
-package Reservas;
+package Factory;
 
-public class Vuelo implements ServicioReserva {
+import Reservas.ServicioReserva;
+
+public class Vehiculo implements ServicioReserva {
 
     private String id;
     private String descripcion;
     private double precio;
     private String proveedor;
 
-    public Vuelo(String id, String descripcion, double precio, String proveedor) {
+    public Vehiculo(String id, String descripcion, double precio, String proveedor) {
         this.id = id;
         this.descripcion = descripcion;
         this.precio = precio;
@@ -31,6 +33,6 @@ public class Vuelo implements ServicioReserva {
 
     @Override
     public String getNombreProveedor() {
-        return this.proveedor;
+        return proveedor;
     }
 }
