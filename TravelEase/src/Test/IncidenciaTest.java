@@ -74,4 +74,15 @@ public class IncidenciaTest {
         assertEquals("Escalado a "+ proveedorEsperado, incidenciaProveedor.getEstado());
     }
     
+    @Test
+    @DisplayName("Comprobar que no se permitan estados nulos o vacios en incidencia")
+    void testSetEstadoIncidencia(){
+        Reserva reserva = new Reserva("RES-07", vueloPrueba);
+        Incidencia incidencia = new Incidencia("INC-07", "Problema con equipaje", reserva);
+        assertNotNull(incidencia.getEstado());
+        assertFalse(incidencia.getEstado().trim().isEmpty());
+
+        assertThrows(IllegalArgumentException.class, ()-> incidencia.setEstado(null));
+        assertThrows(IllegalArgumentException.class, ()-> incidencia.setEstado("  "));
+    }
 }
