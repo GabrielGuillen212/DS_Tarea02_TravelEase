@@ -3,7 +3,7 @@ import Reservas.*;
 
 public class PruebaFactoryVuelos {
     public static void main(String[] args) {
-        // Reserva de vuelo usando Factory Method (clase Ejecutiva)
+       /* // Reserva de vuelo usando Factory Method (clase Ejecutiva)
         VueloFactory fabricaVuelo = new VueloEjecutivoFactory();
         ServicioReserva vueloEjecutivo = fabricaVuelo.reservarVuelo("V002", "Guayaquil - Madrid", 480);
 
@@ -33,6 +33,6 @@ public class PruebaFactoryVuelos {
 
         // Se confirma la reserva de uno de ellos
         Reserva reserva = new Reserva("R010", vueloEjecutivo);
-        System.out.println("Reserva " + reserva.getIdReserva() + " -> " + reserva.getEstado());
+        System.out.println("Reserva " + reserva.getIdReserva() + " -> " + reserva.getEstado());*/
     }
 }

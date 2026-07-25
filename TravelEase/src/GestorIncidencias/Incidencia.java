@@ -25,6 +25,9 @@ public class Incidencia {
         return estado;
     }
     public void setEstado(String estado) {
+        if(estado == null || estado.trim().isEmpty()){
+            throw new IllegalArgumentException("El estado de la incidencia no puede nulo ni vacio");
+        }
         this.estado = estado;
     }
     

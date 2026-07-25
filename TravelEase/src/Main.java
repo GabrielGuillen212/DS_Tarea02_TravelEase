@@ -8,7 +8,7 @@ import Reservas.*;
 
 public class Main {
     public static void main(String[] args) {
-        ServicioReserva vuelo = new Vuelo("V001", "Vuelo Guayaquil - Quito", 220,"Aerolinea 1");
+       /* ServicioReserva vuelo = new Vuelo("V001", "Vuelo Guayaquil - Quito", 220,"Aerolinea 1");
         vuelo = new SeguroViajeDecorator(vuelo);
 
         System.out.println(vuelo.getDescripcion());
@@ -38,6 +38,6 @@ public class Main {
         System.out.println(vehiculoSUV.getDescripcion() + " - $" + vehiculoSUV.getPrecio());
 
         Reserva reservaFactory = new Reserva("R010", vueloEjecutivo);
-        System.out.println("Reserva " + reservaFactory.getIdReserva() + " -> " + reservaFactory.getEstado());
+        System.out.println("Reserva " + reservaFactory.getIdReserva() + " -> " + reservaFactory.getEstado());*/
     }
 }
