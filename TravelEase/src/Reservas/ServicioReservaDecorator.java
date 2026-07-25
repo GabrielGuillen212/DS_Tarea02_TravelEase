@@ -27,4 +27,9 @@ public abstract class ServicioReservaDecorator implements ServicioReserva {
     public String getNombreProveedor() {
         return servicio.getNombreProveedor();
     }    
+
+    @Override
+    public String getNombreProveedor(){
+        return this.servicio.getNombreProveedor();
+    }
 }
