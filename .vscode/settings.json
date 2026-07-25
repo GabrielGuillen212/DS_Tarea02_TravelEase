@@ -1,6 +1,5 @@
 {
     "java.project.referencedLibraries": [
-        "lib/**/*.jar",
-        "c:\\Users\\JAIME\\Downloads\\jakarta.mail-2.0.1.jar"
+        "lib/**/*.jar"
     ]
 }

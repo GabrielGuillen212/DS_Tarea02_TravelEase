@@ -1,5 +1,6 @@
 
 import Notificaciones.*;
+import Personas.Administrador;
 
 public class PruebaNotificaciones {
     public static void main(String[] args) {
@@ -22,8 +23,8 @@ public class PruebaNotificaciones {
         notificador.agregarUsuario(usuario4);
 
         
-        admin.gestionerpoliticas(notificador, "P001", "Nueva política de cancelación: 24 horas antes del vuelo.");
-        admin.gestionerItinerario(notificador, "10:00 AM", "Vuelo a quito");
+        admin.gestionarPoliticas(notificador, "P001", "Nueva política de cancelación: 24 horas antes del vuelo.");
+        admin.gestionarItinerario(notificador, "10:00 AM", "Vuelo a quito");
         admin.gestionarReembolsos(notificador, "R001", "Aprobado", "Solicitud de reembolso aprobada por el administrador.");
     }
 }

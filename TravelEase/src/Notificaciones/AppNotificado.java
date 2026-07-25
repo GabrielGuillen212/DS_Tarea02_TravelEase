@@ -8,6 +8,10 @@ public class AppNotificado implements UsuariosNotificados {
         this.usuario = usuario;
     }
 
+    public String getUsuario() {
+        return usuario;
+    }
+
     @Override
     public void update(String mensaje) {
         System.out.println("Enviando PUSH a la APP de " + usuario + ": " + mensaje);

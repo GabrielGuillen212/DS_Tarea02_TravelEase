@@ -7,6 +7,10 @@ public class EmailNotificado implements UsuariosNotificados {
         this.email = email;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
     @Override
     public void update(String mensaje) {
         System.out.println("Enviando correo a " + email + ": " + mensaje);
