@@ -23,24 +23,25 @@ class NotificadorTest {
     @Test
     @DisplayName("Debe agregar usuarios a la lista de notificación correctamente")
     void testAgregarUsuario() {
-        notificador.agregarUsuario(usuarioemail.getEmail());
+        notificador.agregarUsuario(usuarioemail);
         assertEquals(1, notificador.getListaUsuarios().size(), "El usuario debería registrarse correctamente.");
-        assertTrue(notificador.getListaUsuarios().contains(usuarioemail.getEmail()));
+        assertTrue(notificador.getListaUsuarios().contains(usuarioemail));
+    }
 
     @Test
     @DisplayName("Debe quitar usuarios de la lista de notificación correctamente")
     void testQuitarUsuario() {
-        notificador.agregarUsuario(usuarioemail.getEmail());
-        notificador.quitarUsuario(usuarioemail.getEmail());
+        notificador.agregarUsuario(usuarioemail);
+        notificador.quitarUsuario(usuarioemail);
         assertEquals(0, notificador.getListaUsuarios().size(), "El usuario debería eliminarse correctamente.");
-        assertFalse(notificador.getListaUsuarios().contains(usuarioemail.getEmail()));
+        assertFalse(notificador.getListaUsuarios().contains(usuarioemail));
     }
 
     @Test
     @DisplayName("Debe notificar a todos los usuarios correctamente")
     void testNotificar() {
-        notificador.agregarUsuario(usuarioemail.getEmail());
-        notificador.agregarUsuario(usuarioapp.getUsuario());
+        notificador.agregarUsuario(usuarioemail);
+        notificador.agregarUsuario(usuarioapp);
         notificador.notificar("Mensaje de prueba");
         assertDoesNotThrow(() -> notificador.notificar("Mensaje de prueba"), "La notificación debería enviarse sin errores.");
     }
