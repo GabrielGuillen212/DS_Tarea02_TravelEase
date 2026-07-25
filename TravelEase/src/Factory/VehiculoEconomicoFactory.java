@@ -1,10 +1,18 @@
 package Factory;
 
-import Reservas.*;
-
 public class VehiculoEconomicoFactory extends VehiculoFactory {
+
     @Override
-    public Vehiculo crearVehiculo(String id, String descripcionBase, double precioBase) {
-        return new Vehiculo(id, descripcionBase + " - Económico", precioBase);
+    public Vehiculo crearVehiculo(
+            String id,
+            String descripcionBase,
+            double precioBase,
+            String nombreProveedor) {
+
+        return new Vehiculo(
+                id,
+                descripcionBase + " - Económico",
+                precioBase,
+                nombreProveedor);
     }
 }

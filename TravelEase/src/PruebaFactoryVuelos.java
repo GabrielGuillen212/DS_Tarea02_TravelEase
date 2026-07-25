@@ -14,7 +14,7 @@ public class PruebaFactoryVuelos {
         System.out.println(vueloEjecutivo.getDescripcion() + " - $" + vueloEjecutivo.getPrecio());
         System.out.println(vehiculoSUV.getDescripcion() + " - $" + vehiculoSUV.getPrecio());
 
-        // Probemos tambien con las otras clases/tipos para verificar que todas las factories funcionan
+        // Verificar que con otras clases si funciona 
         VueloFactory fabricaEconomica = new VueloEconomicoFactory();
         ServicioReserva vueloEconomico = fabricaEconomica.reservarVuelo("V003", "Guayaquil - Bogota", 180);
         System.out.println(vueloEconomico.getDescripcion() + " - $" + vueloEconomico.getPrecio());
@@ -31,7 +31,7 @@ public class PruebaFactoryVuelos {
         ServicioReserva vehiculoLujo = fabricaLujo.reservarVehiculo("VH04", "Mercedes Benz", 150);
         System.out.println(vehiculoLujo.getDescripcion() + " - $" + vehiculoLujo.getPrecio());
 
-        // Confirmamos la reserva de uno de ellos
+        // Se confirma la reserva de uno de ellos
         Reserva reserva = new Reserva("R010", vueloEjecutivo);
         System.out.println("Reserva " + reserva.getIdReserva() + " -> " + reserva.getEstado());
     }
