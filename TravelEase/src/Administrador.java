@@ -1,6 +1,7 @@
 import Notificaciones.Notificador;
 import Notificaciones.Politicas;
 import Notificaciones.Itinerario;
+import Notificaciones.Reembolsos;
 
 public class Administrador extends Persona {
     
@@ -47,9 +48,13 @@ public class Administrador extends Persona {
         notificador.notificar("El itinerario con horario " + horario + " ha sido modificado por el administrador " + getNombre() + ".");
     }
 
-    public void gestionarReembolsos(Notificador notificador, String estadoReembolso) {
-        // Lógica de gestión..
-        notificador.notificar("Estado de reembolso actualizado: " + estadoReembolso);
+    public void gestionarReembolsos(Notificador notificador, String idReembolso, String estadoReembolso, String descripcion) {
+        for (Reembolsos r : Reembolsos.listaReembolsos) {
+            if (r.getIdReembolso().equals(idReembolso)) {
+                r.setEstado(estadoReembolso);
+            }
+        }
+        notificador.notificar("Estado de reembolso actualizado: " + estadoReembolso + "por: " + descripcion);
     }
 
 }
