@@ -5,11 +5,13 @@ public class Vuelo implements ServicioReserva {
     private String id;
     private String descripcion;
     private double precio;
+    private String proveedor;
 
-    public Vuelo(String id, String descripcion, double precio) {
+    public Vuelo(String id, String descripcion, double precio, String proveedor) {
         this.id = id;
         this.descripcion = descripcion;
         this.precio = precio;
+        this.proveedor = proveedor;
     }
 
     @Override
@@ -25,5 +27,10 @@ public class Vuelo implements ServicioReserva {
     @Override
     public double getPrecio() {
         return precio;
+    }
+
+    @Override
+    public String getNombreProveedor() {
+        return this.proveedor;
     }
 }
