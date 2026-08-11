@@ -4,11 +4,6 @@ public class Administrador extends Persona {
     
     public String idAdministrador;
     private Notificador notificador;
-
-
-    public Administrador(String nombre, String email) {
-        super(nombre, email);
-    }
     
     public Administrador(String nombre, String email, String idAdministrador) {
         super(nombre, email);
