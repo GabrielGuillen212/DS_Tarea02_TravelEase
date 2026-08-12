@@ -51,7 +51,7 @@ class NotificadorTest {
 
     @Test
     @DisplayName("Debe notificar a todos los usuarios correctamente desde el administradoral gestionar políticas")
-    void testNotificarDesdeAdministrador() {
+    void testNotificarDesdeAdministradorPoliticas() {
         notificador.agregarUsuario(usuarioemail);
         notificador.agregarUsuario(usuarioapp);
         administrador.gestionarPoliticas("pol123", "Cambio de política");
@@ -65,6 +65,14 @@ class NotificadorTest {
         notificador.agregarUsuario(usuarioapp);
         administrador.gestionarItinerario("10:00 AM", "Cambio de itinerario");
         assertDoesNotThrow(() -> administrador.gestionarItinerario("10:00 AM", "Cambio de itinerario"), "La notificación debería enviarse sin errores.");
+    }
+
+    @Test
+    @DisplayName("Intento de gestionar itinerario con horario nulo")
+    void testGestionarItinerarioHorarioNulo() {
+        notificador.agregarUsuario(usuarioemail);
+        notificador.agregarUsuario(usuarioapp);
+        assertDoesNotThrow(() -> administrador.gestionarItinerario(null, "Cambio de itinerario"), "La gestión de itinerario con horario nulo no debería lanzar excepción.");
     }
 
     @Test
