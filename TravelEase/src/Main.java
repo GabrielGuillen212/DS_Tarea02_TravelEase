@@ -27,5 +27,24 @@ public class Main {
             System.out.println("Validación funcionando correctamente: " + e.getMessage());
         }
 
+
+        // ===== Decorator (Steven) =====
+        System.out.println("\n--- Demostración Decorator ---");
+
+        System.out.println("Vuelo original: " + vueloEjecutivo.getDescripcion() + " - $" + vueloEjecutivo.getPrecio());
+
+        ServicioReserva vueloConSeguro = new SeguroViajeDecorator(vueloEjecutivo);
+        System.out.println("Vuelo con seguro: " + vueloConSeguro.getDescripcion() + " - $" + vueloConSeguro.getPrecio());
+
+        System.out.println("Vehículo original: " + vehiculoSUV.getDescripcion() + " - $" + vehiculoSUV.getPrecio());
+
+        ServicioReserva vehiculoConCobertura = new CoberturaVehiculoDecorator(vehiculoSUV);
+        System.out.println("Vehículo con cobertura: " + vehiculoConCobertura.getDescripcion() + " - $" + vehiculoConCobertura.getPrecio());
+
+        Reserva reservaDecorada = new Reserva("R011", vueloConSeguro);
+        System.out.println("Reserva decorada " + reservaDecorada.getIdReserva() + " -> " + reservaDecorada.getEstado());
+        System.out.println("Servicio: " + reservaDecorada.getServicio().getDescripcion());
+        System.out.println("Precio final: $" + reservaDecorada.getServicio().getPrecio());
+
     }
 }
