@@ -35,4 +35,9 @@ public class Politicas {
     public String getIdPolitica() {
         return idPolitica;
     }
+
+    @Override
+    public String toString() {
+        return "Titulo: " + Titulo + " - Descripcion: " + Descripcion + " - idPolitica: " + idPolitica;
+    }
 }
