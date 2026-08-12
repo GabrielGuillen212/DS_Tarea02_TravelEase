@@ -3,16 +3,12 @@ package Notificaciones;
 public class Administrador extends Persona {
     
     public String idAdministrador;
-    private Notificador notificador;
+    private final Notificador notificador;
 
-
-    public Administrador(String nombre, String email) {
-        super(nombre, email);
-    }
-    
-    public Administrador(String nombre, String email, String idAdministrador) {
+    public Administrador(String nombre, String email, String idAdministrador, Notificador notificador) {
         super(nombre, email);
         this.idAdministrador = idAdministrador;
+        this.notificador = notificador;
     }
 
     public String getIdAdmin() {
@@ -23,7 +19,7 @@ public class Administrador extends Persona {
         this.idAdministrador = idAdministrador;
     }
 
-    public void gestionarPoliticas(Notificador notificador, String idPolitica, String cambio) {
+    public void gestionarPoliticas(String idPolitica, String cambio) {
         for (Politicas p : Politicas.listaPoliticas) {
             if (p.getIdPolitica().equals(idPolitica)) {
                 p.setDescripcion(cambio);
@@ -32,7 +28,7 @@ public class Administrador extends Persona {
         notificador.notificar("La política " + idPolitica + " ha sido modificada por el administrador " + getNombre() + ".");
     }
 
-    public void gestionarItinerario(Notificador notificador, String horario, String descripcion) {
+    public void gestionarItinerario(String horario, String descripcion) {
         if (horario == null){
             System.out.println("Horario invalido");
         }else{
@@ -45,7 +41,7 @@ public class Administrador extends Persona {
         }
     }
 
-    public void gestionarReembolsos(Notificador notificador, String idReembolso, String estadoReembolso, String descripcion) {
+    public void gestionarReembolsos(String idReembolso, String estadoReembolso, String descripcion) {
         for (Reembolsos r : Reembolsos.listaReembolsos) {
             if (r.getIdReembolso().equals(idReembolso)) {
                 r.setEstado(estadoReembolso);
