@@ -50,12 +50,30 @@ class NotificadorTest {
     }
 
     @Test
-    @DisplayName("Debe notificar a todos los usuarios correctamente desde el administrador")
+    @DisplayName("Debe notificar a todos los usuarios correctamente desde el administradoral gestionar políticas")
     void testNotificarDesdeAdministrador() {
         notificador.agregarUsuario(usuarioemail);
         notificador.agregarUsuario(usuarioapp);
         administrador.gestionarPoliticas("pol123", "Cambio de política");
         assertDoesNotThrow(() -> administrador.gestionarPoliticas("pol123", "Cambio de política"), "La notificación debería enviarse sin errores.");
+    }
+
+    @Test
+    @DisplayName("Debe notificar a todos los usuarios correctamente desde el administrador al gestionar itinerario")
+    void testNotificarDesdeAdministradorItinerario() {
+        notificador.agregarUsuario(usuarioemail);
+        notificador.agregarUsuario(usuarioapp);
+        administrador.gestionarItinerario("10:00 AM", "Cambio de itinerario");
+        assertDoesNotThrow(() -> administrador.gestionarItinerario("10:00 AM", "Cambio de itinerario"), "La notificación debería enviarse sin errores.");
+    }
+
+    @Test
+    @DisplayName("Debe notificar a todos los usuarios correctamente desde el administrador al gestionar reembolsos")
+    void testNotificarDesdeAdministradorReembolsos() {
+        notificador.agregarUsuario(usuarioemail);
+        notificador.agregarUsuario(usuarioapp);
+        administrador.gestionarReembolsos("reemb123", "Aprobado", "Reembolso aprobado");
+        assertDoesNotThrow(() -> administrador.gestionarReembolsos("reemb123", "Aprobado", "Reembolso aprobado"), "La notificación debería enviarse sin errores.");
     }
 
 }
