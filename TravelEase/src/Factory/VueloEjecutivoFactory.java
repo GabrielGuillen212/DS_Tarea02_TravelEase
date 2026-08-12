@@ -8,6 +8,9 @@ public class VueloEjecutivoFactory extends VueloFactory {
             String ruta,
             double precioBase,
             String nombreProveedor) {
+        if (ruta == null || ruta.trim().isEmpty()) {
+            throw new IllegalArgumentException("La ruta no puede estar vacía ni ser nula.");
+        }
 
         return new Vuelo(
                 id,
