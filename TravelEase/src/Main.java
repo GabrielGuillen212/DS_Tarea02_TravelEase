@@ -1,11 +1,12 @@
 import Factory.*;
+import GestorIncidencias.*;
 import Notificaciones.*;
 import Reservas.*;
 
 public class Main {
     public static void main(String[] args) {
 
-        // ===== Factory Method (Jairo) =====
+        // ===== Factory Method =====
         System.out.println("--- Demostración Factory Method ---");
 
         VueloFactory fabricaVuelo = new VueloEjecutivoFactory();
@@ -19,7 +20,7 @@ public class Main {
         Reserva reservaFactory = new Reserva("R010", vueloEjecutivo);
         System.out.println("Reserva " + reservaFactory.getIdReserva() + " -> " + reservaFactory.getEstado());
 
-        // Demostración de la validación agregada en el refactor (Sección D)
+        
         try {
             new Vuelo(null, "Ruta inválida", 100, "LATAM");
         } catch (IllegalArgumentException e) {
@@ -27,7 +28,7 @@ public class Main {
         }
 
 
-        // ===== Decorator (Steven) =====
+        // ===== Decorator =====
         System.out.println("\n--- Demostración Decorator ---");
 
         System.out.println("Vuelo original: " + vueloEjecutivo.getDescripcion() + " - $" + vueloEjecutivo.getPrecio());
@@ -46,8 +47,8 @@ public class Main {
         System.out.println("Precio final: $" + reservaDecorada.getServicio().getPrecio());
         
 
-        //===== Observer (Guillen) =====
-        System.out.println("---Demostracion Observer---");
+        //===== Observer =====
+        System.out.println("\n---Demostracion Observer---");
 
         Notificador notificador = new Notificador();
         Administrador admin = new Administrador("Gabriel", "gguillen@easytr.com", "admin123", notificador);
@@ -70,12 +71,41 @@ public class Main {
         admin.gestionarItinerario("10:00", "vuelo a Brasil");
         admin.gestionarReembolsos("REM01", "Aceptado", "Se a acepto la causa del reembolso");
 
-        System.out.println("==== Cambios realizados ====");
+        System.out.println("\n==== Cambios realizados ====");
 
         System.out.println(admin.getNombre() + " " + admin.getIdAdmin());
         System.out.println(Itinerario.listaItinerarios);
         System.out.println(Politicas.listaPoliticas);
         System.out.println(Reembolsos.listaReembolsos);
+
+        //===== Strategy =====
+        System.out.println("\n---Demostracion Strategy---");
+        // 1. Instanciación del Gestor de Incidencias
+        GestionIncidencia gestor = new GestionIncidencia();
+
+        
+        Incidencia inc1 = new Incidencia("INC-001", "Pérdida de equipaje en vuelo", reservaFactory);
+        System.out.println("Incidencia 1 Creada | ID: " + inc1.getIdReporte() + 
+                           " | Reserva: " + inc1.getReserva().getIdReserva() + 
+                           " | Estado Inicial: " + inc1.getEstado());
+
+        //Resolución por Agente de Soporte 
+        System.out.println("\nSolución por Agente de Soporte");
+        gestor.ejecutarSolucion(inc1, true);
+        System.out.println("Estado Final Incidencia 1: " + inc1.getEstado());
+
+
+        
+        Incidencia inc2 = new Incidencia("INC-002", "Falla mecánica en vehículo alquilado", reservaDecorada);
+        System.out.println("\nIncidencia 2 Creada | ID: " + inc2.getIdReporte() + 
+                           " | Reserva: " + inc2.getReserva().getIdReserva() + 
+                           " | Estado Inicial: " + inc2.getEstado());
+
+        
+        System.out.println("\nEscalado a Proveedor ");
+        gestor.ejecutarSolucion(inc2, false);
+        System.out.println("Estado Final Incidencia 2: " + inc2.getEstado());
+
 
     }
 }
