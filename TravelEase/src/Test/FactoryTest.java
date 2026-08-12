@@ -100,4 +100,49 @@ public class FactoryTest {
         assertEquals("VH04", servicio.getID());
         assertEquals("Hertz", servicio.getNombreProveedor());
     }
+    @Test
+    @DisplayName("No debe crear un Vuelo con id nulo")
+    void testVueloIdNuloLanzaExcepcion() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            new Vuelo(null, "Guayaquil - Quito", 100, "LATAM");
+        });
+    }
+
+    @Test
+    @DisplayName("No debe crear un Vuelo con precio negativo")
+    void testVueloPrecioNegativoLanzaExcepcion() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            new Vuelo("V006", "Guayaquil - Quito", -50, "LATAM");
+        });
+    }
+
+    @Test
+    @DisplayName("No debe crear un Vehiculo con proveedor vacío")
+    void testVehiculoProveedorVacioLanzaExcepcion() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            new Vehiculo("VH06", "Sedan", 60, "");
+        });
+    }
+
+    @Test
+    @DisplayName("VueloEjecutivoFactory no debe crear un vuelo con ruta vacía")
+    void testVueloEjecutivoRutaVaciaLanzaExcepcion() {
+        VueloFactory fabrica = new VueloEjecutivoFactory();
+        assertThrows(IllegalArgumentException.class, () -> {
+            fabrica.crearVuelo("V007", "", 480, "LATAM");
+        });
+    }
+
+    @Test
+    @DisplayName("Dos creadores distintos con la misma entrada deben producir resultados distintos")
+    void testCreadoresDistintosProducenResultadosDistintos() {
+        VueloFactory fabricaEconomica = new VueloEconomicoFactory();
+        VueloFactory fabricaEjecutiva = new VueloEjecutivoFactory();
+
+        Vuelo vueloEconomico = fabricaEconomica.crearVuelo("V008", "Guayaquil - Lima", 200, "LATAM");
+        Vuelo vueloEjecutivo = fabricaEjecutiva.crearVuelo("V008", "Guayaquil - Lima", 200, "LATAM");
+
+        assertNotEquals(vueloEconomico.getPrecio(), vueloEjecutivo.getPrecio());
+        assertNotEquals(vueloEconomico.getDescripcion(), vueloEjecutivo.getDescripcion());
+    }
 }
