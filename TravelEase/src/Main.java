@@ -83,29 +83,20 @@ public class Main {
 
         GestionIncidencia gestor = new GestionIncidencia();
 
-        
-        Incidencia inc1 = new Incidencia("INC-001", "Pérdida de equipaje en vuelo", reservaFactory);
-        System.out.println("Incidencia 1 Creada | ID: " + inc1.getIdReporte() + 
-                           " | Reserva: " + inc1.getReserva().getIdReserva() + 
-                           " | Estado Inicial: " + inc1.getEstado());
+        // Caso 1: Resolución por Agente de Soporte
+        Incidencia inc1 = new Incidencia("INC-001", "Pérdida de equipaje", reservaFactory);
 
-        //Resolución por Agente de Soporte 
-        System.out.println("\nSolución por Agente de Soporte");
-        gestor.ejecutarSolucion(inc1, true);
-        System.out.println("Estado Final Incidencia 1: " + inc1.getEstado());
+        gestor.setEstrategia(new EstrategiaAgenteSoporte()); 
+        gestor.ejecutarSolucion(inc1);                       
+        System.out.println("Estado Final INC-001: " + inc1.getEstado());
 
+        System.out.println();
+        // Caso 2: Escalado a Proveedor (Cambiando la estrategia en tiempo de ejecución)
+        Incidencia inc2 = new Incidencia("INC-002", "Falla mecánica en auto", reservaDecorada);
 
-        
-        Incidencia inc2 = new Incidencia("INC-002", "Falla mecánica en vehículo alquilado", reservaDecorada);
-        System.out.println("\nIncidencia 2 Creada | ID: " + inc2.getIdReporte() + 
-                           " | Reserva: " + inc2.getReserva().getIdReserva() + 
-                           " | Estado Inicial: " + inc2.getEstado());
-
-        
-        System.out.println("\nEscalado a Proveedor ");
-        gestor.ejecutarSolucion(inc2, false);
-        System.out.println("Estado Final Incidencia 2: " + inc2.getEstado());
-
+        gestor.setEstrategia(new EstrategiaEscaladoProveedor()); 
+        gestor.ejecutarSolucion(inc2);                          
+        System.out.println("Estado Final INC-002: " + inc2.getEstado());
 
     }
 }
