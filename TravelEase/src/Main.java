@@ -80,7 +80,7 @@ public class Main {
 
         //===== Strategy =====
         System.out.println("\n---Demostracion Strategy---");
-        // 1. Instanciación del Gestor de Incidencias
+
         GestionIncidencia gestor = new GestionIncidencia();
 
         
