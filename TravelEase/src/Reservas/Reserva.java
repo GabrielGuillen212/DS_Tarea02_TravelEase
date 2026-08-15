@@ -1,15 +1,15 @@
 package Reservas;
 
-
 public class Reserva {
+
     private String idReserva;
-    private String estado; // Ej: "RESERVADO", "CONFIRMADO", "CANCELADO"
-    private ServicioReserva servicio; 
+    private EstadoReserva estado;
+    private ServicioReserva servicio;
 
     public Reserva(String idReserva, ServicioReserva servicio) {
         this.idReserva = idReserva;
         this.servicio = servicio;
-        this.estado = "RESERVADO"; 
+        this.estado = EstadoReserva.RESERVADO;
     }
 
     public ServicioReserva getServicio() {
@@ -20,8 +20,7 @@ public class Reserva {
         return this.idReserva;
     }
 
-    public String getEstado() {
+    public EstadoReserva getEstado() {
         return this.estado;
     }
-
 }
