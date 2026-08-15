@@ -10,9 +10,9 @@ public class Reembolsos {
     public String descripcion;
 
 
-    public Reembolsos(String idReembolso, String estado, String descripcion) {
+    public Reembolsos(String idReembolso, String descripcion) {
         this.idReembolso = idReembolso;
-        this.estado = estado;
+        this.estado = "Pendiente";
         this.descripcion = descripcion;
         listaReembolsos.add(this);
     }
@@ -35,5 +35,10 @@ public class Reembolsos {
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
+    }
+
+    @Override
+    public String toString() {
+        return "idReembolso: " + idReembolso + " - estado: " + estado + " - descripcion: " + descripcion;
     }
 }
