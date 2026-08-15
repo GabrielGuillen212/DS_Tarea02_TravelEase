@@ -30,5 +30,11 @@ public class Incidencia {
         }
         this.estado = estado;
     }
+    public String getNombreProveedor() {
+        if (this.reserva != null && this.reserva.getServicio() != null) {
+            return this.reserva.getServicio().getNombreProveedor();
+        }
+        return "Proveedor Desconocido";
+    }
     
 }
